@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app.module';
-import { exp1 } from './example/exp1';
+import { exp3 } from './example/exp3';
 
 async function bootstrap() {
-    exp1();
+    exp3();
     const app = await NestFactory.create(AppModule);
     await app.listen(3000);
 }
