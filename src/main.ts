@@ -12,6 +12,8 @@ async function bootstrap() {
         logger: ['error', 'warn'],
     });
     app.setGlobalPrefix('api');
-    await app.listen(3000);
+    await app.listen(3000, () => {
+        console.log('api: http://localhost:3000');
+    });
 }
 bootstrap();
