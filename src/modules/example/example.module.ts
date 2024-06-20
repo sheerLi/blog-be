@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 
+import { ContentModule } from '../content/content.module';
+
+import { TestController } from './controllers/test.controller';
 import { FirstService } from './services/first.service';
 import { FourthService } from './services/fourth.service';
 import { SecondService } from './services/second.service';
 import { ThirdService } from './services/third.service';
-import { TestController } from './controllers/test.controller';
 
 const firstObject = {
     useValue: () => 'useValue提供者',
@@ -14,6 +16,7 @@ const firstObject = {
 const firstInstance = new FirstService();
 
 @Module({
+    imports: [ContentModule],
     providers: [
         {
             provide: FirstService,

@@ -1,5 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 
+import { PostService } from '@/modules/content/services/post.service';
+
 import { FirstService } from '../services/first.service';
 import { FourthService } from '../services/fourth.service';
 import { SecondService } from '../services/second.service';
@@ -12,7 +14,13 @@ export class TestController {
         @Inject('FACTORY-EXAMPLE') private ftExp: FourthService,
         @Inject('ALIAS-EXAMPLE') private asExp: FirstService,
         @Inject('ASYNC-EXAMPLE') private acExp: SecondService,
+        private postService: PostService,
     ) {}
+
+    @Get('posts')
+    async posts() {
+        return this.postService.findAll();
+    }
 
     @Get('value')
     async useValue() {
