@@ -1,6 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 
 import { PostService } from '@/modules/content/services/post.service';
+import { ConfigService } from '@/modules/core/services/config.service';
 
 import { FirstService } from '../services/first.service';
 import { FourthService } from '../services/fourth.service';
@@ -15,7 +16,13 @@ export class TestController {
         @Inject('ALIAS-EXAMPLE') private asExp: FirstService,
         @Inject('ASYNC-EXAMPLE') private acExp: SecondService,
         private postService: PostService,
+        private configService: ConfigService,
     ) {}
+
+    @Get('name')
+    async name() {
+        return this.configService.get('name');
+    }
 
     @Get('posts')
     async posts() {
