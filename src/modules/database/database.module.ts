@@ -16,7 +16,7 @@ export class DatabaseModule {
 
     static forRepository<T extends Type<any>>(
         repositories: T[],
-        dataSourceName: string,
+        dataSourceName?: string,
     ): DynamicModule {
         const providers: Provider[] = [];
         for (const Repo of repositories) {
